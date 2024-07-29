@@ -1,0 +1,76 @@
+display_information:
+  name: opus-bot-local
+  description: opus bot
+  background_color: "#1d7c00"
+features:
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  bot_user:
+    display_name: opus-bot-local
+    always_online: true
+  slash_commands:
+    - command: /hello-opus
+      url: <your-domain-url>/slack/command
+      description: test command
+      should_escape: false
+oauth_config:
+  redirect_urls:
+    - <your-domain-url>/slack/add
+  scopes:
+    user:
+      - channels:history
+      - channels:write
+      - channels:read
+      - chat:write
+      - groups:history
+      - groups:read
+      - groups:write
+      - mpim:history
+      - mpim:read
+      - mpim:write
+      - users:read
+      - users:read.email
+      - im:write
+      - users.profile:read
+    bot:
+      - channels:history
+      - channels:join
+      - channels:manage
+      - channels:read
+      - chat:write
+      - chat:write.public
+      - commands
+      - groups:history
+      - groups:read
+      - groups:write
+      - mpim:history
+      - mpim:read
+      - mpim:write
+      - users:read
+      - im:write
+      - users:read.email
+      - users.profile:read
+      - reactions:write
+settings:
+  event_subscriptions:
+    request_url: <your-domain-url>/slack/events
+    user_events:
+      - member_joined_channel
+      - member_left_channel
+      - message.channels
+    bot_events:
+      - app_home_opened
+      - member_joined_channel
+      - member_left_channel
+      - message.channels
+      - message.groups
+      - team_join
+      - message.im
+  interactivity:
+    is_enabled: true
+    request_url: <your-domain-url>/slack/interactive
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
